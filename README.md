@@ -8,6 +8,7 @@ This repo is forked from khuyentran1401 and adjusted with my personal touch.
 This repository is a template for a data science project. This is the project structure I frequently use for my data science project. 
 
 ## Tools used in this project
+* [GitHubCLI] (https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git): Controlling and caching your git credentials
 * [pyenv] (https://github.com/pyenv/pyenv): Control your Python version
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f)
 * [hydra](https://hydra.cc/): Manage configuration files - [article](https://towardsdatascience.com/introduction-to-hydra-cc-a-powerful-framework-to-configure-your-data-science-projects-ed65713a53c6)
