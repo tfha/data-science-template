@@ -58,14 +58,140 @@ This repository is a template for a data science project. This is the project st
 ## How to use this project
 
 Install Cookiecutter:
+
 ```bash
 pip install cookiecutter
 ```
 
 Create a project based on the template:
+
 ```bash
 cookiecutter https://github.com/tfha/data-science-template
 ```
 
 Find detailed explanation of this template [here](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800).
+
+
+## Basic commands
+
+### pyenv
+
+Python versions are stored in /home/<username>/.pyenv/version/
+This should be added to your PATH. To see whats inside your path, run in your terminal:
+
+```bash
+echo @PATH
+```
+
+
+Install a new Python version
+
+```bash
+pyenv install 3.10.5
+```
+
+Set the global Python version (NOTE: exit an eventual poetry or pipenv session):
+
+```bash
+pyenv global 3.10.5
+```
+
+Set the local Python version for your project:
+
+```bash
+pyenv local 3.10.5
+```
+
+Inspect python versions
+
+```bash
+pyenv versions
+python --version
+pyenv which python
+```
+
+### poetry
+
+Poetry has similarities with pipenv but has extended possibilities.
+
+All main dependencies must be specified in a file in your repo called **pyproject.toml**. Subdependencies will be saved in poetry.lock. Originally there can just be a few dependencies in the file, but the file will be automatically updated underway.
+
+If you haven't got a pyprojct.toml in your repo you can generate one calling:
+
+```bash
+poetry init --name <name of your package>
+```
+
+Activating the virtual environment (NOTE: Before activating, set the python version by call 'pyenv global 3.10.5' or 'pyenv local 3.10.5'):
+
+```bash
+poetry shell
+```
+
+To exit the environment.
+
+```bash
+exit
+```
+
+Install dependencies. Running this command for the first time, the program will find the best possible combination of library versions described in **pyproject.toml**. A **poetry.lock** will be automatically genereated with detailed version for all main packages and sub-packages. Running *poetry install* when both are present will install exactly the version defined in **poetry.lock**. Thus, the package version in **pyproject.toml** and **poetry.lock** can be different. By calling this command locally for different team-members will ensure that the exact same package versions will be used.
+
+```bash
+poetry install
+```
+
+To add new packages **pyproject.toml** and **poetry.lock** will be automatically updated. The latest possible version of the package will be used.
+
+```bash
+poetry add "pandas>=1.2.0"
+```
+
+To add packages only used in development, and highlighted as such in **pyproject.toml** (will not be included in packaging into pypi):
+
+```bash
+poetry add loguru --dev
+```
+
+
+To update packages to latest versions (under the restrictions described in **pyproject.toml**, ie update this file if you want new restrictions) run:
+
+```bash
+poetry update
+```
+
+To only update a package:
+
+```bash
+poetry update pandas matplotlib
+```
+
+To remove a package:
+
+```bash
+poetry remove pandas
+```
+
+To list all available packages (eventually naming a package directly to see the details):
+
+```bash
+poetry show
+```
+
+Check your **pyproject.toml**:
+
+```bash
+poetry check
+```
+
+Search for a package in a remote repo:
+
+```bash
+poetry search pandas
+```
+
+Export the **poetry.lock** file to **requirements.txt** (you don't need it, but anyway):
+
+```bash
+poetry export -f requirements.txt --output requirement.txt
+```
 
